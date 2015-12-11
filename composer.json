@@ -1,0 +1,33 @@
+{
+    "name": "marknl/iodef",
+    "description": "Library for parsing IODEF in PHP",
+    "version": "1.0-dev",
+    "keywords": ["iodef", "rfc5070"],
+    "homepage": "http://e-rave.nl/iodef",
+    "type": "library",
+    "license": "GPL-2.0",
+    "authors": [
+		{
+			"name": "Mark Stunnenberg",
+			"email": "mark@e-rave.nl",
+			"homepage": "http://e-rave.nl/",
+			"role": "Lead"
+		},
+        {
+            "name": "The Community",
+            "homepage": "https://github.com/marknl/iodef/graphs/contributors"
+        }
+	],
+    "support": {
+        "issues": "https://github.com/marknl/iodef/issues",
+        "source": "https://github.com/marknl/iodef"
+    },
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Marknl\\Iodef\\": "src/",
+        }
+    }
+}
