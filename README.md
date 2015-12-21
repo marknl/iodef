@@ -1,8 +1,6 @@
 Marknl Iodef Library
 ====================
 [![Build Status](https://travis-ci.org/marknl/iodef.svg?branch=master)](https://travis-ci.org/marknl/iodef)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/marknl/iodef/badges/quality-score.png?s=?)](https://scrutinizer-ci.com/g/marknl/iodef/)
-[![Code Coverage](https://scrutinizer-ci.com/g/marknl/iodef/badges/coverage.png?s=?)](https://scrutinizer-ci.com/g/marknl/iodef/)
 [![Latest Stable Version](https://poser.pugx.org/marknl/iodef/v/stable.png)](https://packagist.org/packages/marknl/iodef)
 
 Introduction
@@ -14,7 +12,8 @@ and was published in 2007.
 Features
 --------
 
-* Read from and write to IODEF files.
+* Read an IODEF document
+* Write an IODEF document
 
 Documentation
 -------------
@@ -27,5 +26,5 @@ This library is available on [Packagist](http://packagist.org/packages/marknl/io
 The recommended way to install it is through [Composer](http://getcomposer.org):
 
 ```bash
-$ composer require marknl/iodef:@stable
+$ composer require marknl/iodef
 ```

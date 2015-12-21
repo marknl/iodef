@@ -12,22 +12,19 @@
 			"email": "mark@e-rave.nl",
 			"homepage": "http://e-rave.nl/",
 			"role": "Lead"
-		},
-        {
-            "name": "The Community",
-            "homepage": "https://github.com/marknl/iodef/graphs/contributors"
-        }
+		}
 	],
     "support": {
         "issues": "https://github.com/marknl/iodef/issues",
         "source": "https://github.com/marknl/iodef"
     },
     "require": {
-        "php": ">=5.5.0"
+        "php": ">=5.5.0",
+        "sabre/xml": "^1.2"
     },
     "autoload": {
         "psr-4": {
-            "Marknl\\Iodef\\": "src/",
+            "Marknl\\Iodef\\": "src/"
         }
     }
 }

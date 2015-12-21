@@ -4,7 +4,7 @@ namespace Marknl\Iodef\Elements;
 
 use Marknl\Iodef\IodefElement;
 
-class Fax extends IodefElement
+class Timezone extends IodefElement
 {
     public $value = '';
 
@@ -33,7 +33,7 @@ class Fax extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => 'required|string',
+            'value' => ['required', 'regex:/Z|[\+\-](0[0-9]|1[0-4]):[0-5][0-9]/'],
         ];
     }
 }

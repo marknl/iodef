@@ -1,0 +1,94 @@
+<IODEF-Document xmlns="urn:ietf:params:xml:ns:iodef-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.00" lang="en">
+    <Incident purpose="mitigation" restriction="private">
+        <IncidentID name="AbuseIO" restriction="public">abuseio-123456</IncidentID>
+            <AlternativeID>
+                <IncidentID name="Shadowserver" restriction="public">shadowcode-834394</IncidentID>
+                <IncidentID name="Blocklist.de" restriction="private">blde#30dkd0</IncidentID>
+            </AlternativeID>
+        <RelatedActivity>
+            <IncidentID name="Example Incident 1" restriction="public">example-000001</IncidentID>
+        </RelatedActivity>
+        <DetectTime>2015-01-01T01:12:34+01:00</DetectTime>
+        <ReportTime>2015-01-01T02:12:34+01:00</ReportTime>
+        <Description>Sample description for this report.</Description>
+        <Assessment occurrence="actual">
+            <Impact severity="high" type="unknown">Impact value</Impact>
+            <TimeImpact metric="downtime" duration="hour">2</TimeImpact>
+            <MonetaryImpact currency="EUR">10.00</MonetaryImpact>
+            <Counter type="packet" meaning="Amount of Packets from source">2439879534</Counter>
+            <Counter type="flow" meaning="Amount of Flows to target">234246</Counter>
+            <Confidence rating="numeric">10</Confidence>
+            <AdditionalData dtype="xml"><xml><root><node>item 1</node></root></xml></AdditionalData>
+            <AdditionalData dtype="url" meaning="original notifier">http://abuse.io</AdditionalData>
+        </Assessment>
+        <Method restriction="private">
+            <Reference>
+                <ReferenceName>nmap</ReferenceName>
+                <URL>http://nmap.toolsite.example.com</URL>
+                <Description>Reference to the scanning tool "nmap"</Description>
+            </Reference>
+            <Description>Description for this Method.</Description>
+            <AdditionalData dtype="integer" meaning="sample data">11</AdditionalData>
+        </Method>
+        <Contact role="creator" type="organization">
+            <ContactName>Example.com CSIRT</ContactName>
+            <Description>Sample description for this contact.</Description>
+            <RegistryHandle registry="arin">example-com</RegistryHandle>
+            <PostalAddress>Examplestreet 12</PostalAddress>
+            <Email>contact@csirt.example.com</Email>
+            <Telephone>+31201234561</Telephone>
+            <Fax>+31201234562</Fax>
+            <Timezone>+01:00</Timezone>
+            <Contact role="tech" type="organization">
+                <ContactName>Techie Sjaak</ContactName>
+                <Email>sjaak@tech.example.com</Email>
+            </Contact>
+            <AdditionalData dtype="ext-value" ext-dtype="custom-type" restriction="need-to-know">Some additional information about this contact.</AdditionalData>
+        </Contact>
+        <EventData>
+            <Description>Sample description event.</Description>
+            <DetectTime>2015-01-01T01:12:33+01:00</DetectTime>
+            <StartTime>2015-01-01T02:10:34+01:00</StartTime>
+            <Assessment occurrence="actual">
+                <Impact completion="succeeded" type="recon">Impact value</Impact>
+            </Assessment>
+            <Flow>
+                <System category="source" spoofed="unknown">
+                    <Node>
+                        <NodeName>Source Node Name</NodeName>
+                        <Address category="ipv4-addr">192.0.2.240</Address>
+                        <Location>Basement: Rack12 / U5</Location>
+                        <DateTime>2001-09-13T18:11:21+02:00</DateTime>
+                        <NodeRole category="server-public">Annoying server</NodeRole>
+                    </Node>
+                    <Service ip_protocol="6">
+                        <Portlist>2,5-15,30,32,40-50,55-60</Portlist>
+                        <Application vendor="Microsoft" name="Office365" version="11.1">
+                            <URL>http://www.microsoft.com</URL>
+                        </Application>
+                    </Service>
+                    <OperatingSystem vendor="CentOS" name="CentOS" version="6.3"/>
+                </System>
+            </Flow>
+            <Expectation severity="medium" action="contact-source-site">
+                <Description>Expected to contact source.</Description>
+            </Expectation>
+            <Record restriction="private">
+                <RecordData>
+                    <DateTime>2001-09-13T18:11:21+02:00</DateTime>
+                    <Description>Web-server logs</Description>
+                    <RecordPattern type="regex">/[a-Z]+/</RecordPattern>
+                    <RecordItem dtype="string">
+                    192.0.2.1 - - [13/Sep/2001:18:11:21 +0200] "GET /default.ida?XXXXXX
+                    </RecordItem>
+                    <RecordItem dtype="url">http://mylogs.example.com/logs/httpd_access</RecordItem>
+                </RecordData>
+            </Record>
+        </EventData>
+        <History>
+            <HistoryItem action="contact-source-site">
+                <DateTime>2001-09-13T18:11:21+02:00</DateTime>
+            </HistoryItem>
+        </History>
+    </Incident>
+</IODEF-Document>

@@ -4,7 +4,7 @@ namespace Marknl\Iodef\Elements;
 
 use Marknl\Iodef\IodefElement;
 
-class Application extends IodefElement
+class OperatingSystem extends IodefElement
 {
     public function __construct()
     {

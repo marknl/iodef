@@ -4,7 +4,7 @@ namespace Marknl\Iodef\Elements;
 
 use Marknl\Iodef\IodefElement;
 
-class AdditionalData extends IodefElement
+class RecordItem extends IodefElement
 {
     public $value = '';
 

@@ -4,14 +4,16 @@ namespace Marknl\Iodef\Elements;
 
 use Marknl\Iodef\IodefElement;
 
-class Fax extends IodefElement
+class IncidentID extends IodefElement
 {
     public $value = '';
 
     public function __construct()
     {
         $this->attributes = [
-            'meaning' => '',
+            'name'          => '',
+            'instance'      => '',
+            'restriction'   => 'public',
         ];
     }
 
@@ -22,7 +24,9 @@ class Fax extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'meaning' => 'sometimes|string',
+            'name'          => 'required|string',
+            'instance'      => 'sometimes|string',
+            'restriction'   => 'sometimes|in:default,public,need-to-know,private',
         ];
     }
 
