@@ -5,8 +5,8 @@ $IODEFDocument = new Marknl\Iodef\Elements\IODEFDocument();
     $Incident->setAttributes(['purpose' => 'mitigation']);
 
         $IncidentID = new Marknl\Iodef\Elements\IncidentID();
-        $IncidentID->setAttributes(['name' => 'AbuseIO']);
-        $IncidentID->value('abuseio-123456');
+        $IncidentID->setAttributes(['name' => 'csirt.example.com']);
+        $IncidentID->value('908711');
         $Incident->addChild($IncidentID);
 
         $AlternativeID = new Marknl\Iodef\Elements\AlternativeID();

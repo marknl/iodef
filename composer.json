@@ -20,7 +20,8 @@
     },
     "require": {
         "php": ">=5.5.0",
-        "sabre/xml": "^1.2"
+        "sabre/xml": "^1.2",
+        "illuminate/validation": ">=5.2.0"
     },
     "autoload": {
         "psr-4": {

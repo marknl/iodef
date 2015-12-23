@@ -1,7 +1,5 @@
 language: php
 
-sudo: false
-
 php:
   - 5.5
   - 5.6
@@ -13,4 +11,8 @@ cache:
 before_script:
   - composer install --no-progress --no-plugins
 
-script: phpunit --coverage-text --coverage-clover=coverage.clover
+script: phpunit --configuration phpunit.xml
+
+notifications:
+    on_success: never
+    on_failure: always
