@@ -8,7 +8,7 @@ use Sabre\Xml\Element as SabreElement;
 use Valitron\Validator as Validator;
 
 /**
- * IODEF Element class.
+ * IODEF Element Class.
  * Provides a blueprint for all IODEF Element Types.
  *
  * @copyright Copyright (C) 2015-2016 Marknl (www.e-rave.nl)
