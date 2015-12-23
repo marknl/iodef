@@ -5,7 +5,7 @@ namespace Marknl\Iodef;
 use Sabre\Xml\Reader as SabreReader;
 use Sabre\Xml\Writer as SabreWriter;
 use Sabre\Xml\Element as SabreElement;
-use Validator;
+use Illuminate\Validation;
 use Error;
 
 /**
@@ -74,7 +74,8 @@ abstract class IodefElement implements SabreElement
      * @param  mixed $value
      * @return void
      */
-    public function value($value) {
+    public function value($value)
+    {
         $this->value = $value;
     }
 
@@ -105,8 +106,8 @@ abstract class IodefElement implements SabreElement
     {
         $retArray = [];
 
-        foreach($this->elements as $element => $occurrence) {
-            switch($occurrence) {
+        foreach ($this->elements as $element => $occurrence) {
+            switch ($occurrence) {
                 case 'REQUIRED':
                     if (property_exists($this, $element)) {
                         $retArray[] = [
@@ -115,7 +116,9 @@ abstract class IodefElement implements SabreElement
                             'value'         => $this->$element
                         ];
                     } else {
-                        throw new Error($this->getShortName(get_called_class()) .": Required element '{$element}' missing.");
+                        throw new Error(
+                            $this->getShortName(get_called_class()) .": Required element '{$element}' missing."
+                        );
                     }
                     break;
                 case 'OPTIONAL':
@@ -129,7 +132,7 @@ abstract class IodefElement implements SabreElement
                     break;
                 case 'REQUIRED_MULTI':
                     if (property_exists($this, $element)) {
-                        foreach($this->$element as $child) {
+                        foreach ($this->$element as $child) {
                             $retArray[] = [
                                 'name'          => $element,
                                 'attributes'    => array_filter($child->attributes),
@@ -137,12 +140,14 @@ abstract class IodefElement implements SabreElement
                             ];
                         }
                     } else {
-                        throw new Error($this->getShortName(get_called_class()) .": Required element '{$element}' missing.");
+                        throw new Error(
+                            $this->getShortName(get_called_class()) .": Required element '{$element}' missing."
+                        );
                     }
                     break;
                 case 'OPTIONAL_MULTI':
                     if (property_exists($this, $element)) {
-                        foreach($this->$element as $child) {
+                        foreach ($this->$element as $child) {
                             $retArray[] = [
                                 'name'          => $element,
                                 'attributes'    => array_filter($child->attributes),
@@ -152,7 +157,9 @@ abstract class IodefElement implements SabreElement
                     }
                     break;
                 default:
-                    throw new Error($this->getShortName(get_called_class()) .": Unknown occurence type for element {$element}.");
+                    throw new Error(
+                        $this->getShortName(get_called_class()) .": Unknown occurence type for element {$element}."
+                    );
             }
         }
 
@@ -165,8 +172,8 @@ abstract class IodefElement implements SabreElement
      * @param  SabreReader $reader [description]
      * @return IodefElement
      */
-    static function xmlDeserialize(SabreReader $reader) {
-
+    public static function xmlDeserialize(SabreReader $reader)
+    {
         $IodefElement = new static();
         $IodefElement->setAttributes($reader->parseAttributes());
 
@@ -174,9 +181,7 @@ abstract class IodefElement implements SabreElement
 
         // parseInnerTree will return an array or string.
         if (is_array($innerData)) {
-
-            foreach($innerData as $child) {
-
+            foreach ($innerData as $child) {
                 // This should always and only by of type 'object'.
                 if (gettype($child['value']) == 'object') {
                     $className = $child['value']->getShortName();
@@ -200,11 +205,10 @@ abstract class IodefElement implements SabreElement
      * @param  SabreWriter $writer
      * @return void
      */
-    public function xmlSerialize(SabreWriter $writer) {
-
+    public function xmlSerialize(SabreWriter $writer)
+    {
         // Validate the attributes and value.
         if ($this->validate() === true) {
-
             // Start serializing all allowed child elements
             if (empty($this->elements)) {
                 $writer->write($this->value);
