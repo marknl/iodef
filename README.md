@@ -1,7 +1,10 @@
 Marknl Iodef Library
 ====================
 [![Build Status](https://travis-ci.org/marknl/iodef.svg?branch=master)](https://travis-ci.org/marknl/iodef)
-[![Latest Stable Version](https://poser.pugx.org/marknl/iodef/v/stable.png)](https://packagist.org/packages/marknl/iodef)
+[![Latest Stable Version](https://poser.pugx.org/marknl/iodef/v/stable)](https://packagist.org/packages/marknl/iodef)
+[![Latest Unstable Version](https://poser.pugx.org/marknl/iodef/v/unstable)](https://packagist.org/packages/marknl/iodef)
+[![Total Downloads](https://poser.pugx.org/marknl/iodef/downloads)](https://packagist.org/packages/marknl/iodef)
+[![License](https://poser.pugx.org/marknl/iodef/license)](https://packagist.org/packages/marknl/iodef)
 
 Introduction
 ------------
