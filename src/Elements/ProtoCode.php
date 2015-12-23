@@ -15,7 +15,8 @@ class ProtoCode extends IodefElement
     public static function getValueRule()
     {
         return [
-            'value' => 'required|integer',
+            'required' => 'value',
+            'integer' => 'value',
         ];
     }
 }

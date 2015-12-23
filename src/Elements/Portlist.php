@@ -15,7 +15,10 @@ class Portlist extends IodefElement
     public static function getValueRule()
     {
         return [
-            'value' => ['required', 'regex:/^\d+(\-\d+)?(,\d+(\-\d+)?)*/'],
+            'required' => 'value',
+            'regex' => [
+                ['value', '/^\d+(\-\d+)?(,\d+(\-\d+)?)*/']
+            ],
         ];
     }
 }

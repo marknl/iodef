@@ -32,9 +32,13 @@ class IODEFDocument extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'version'   => 'required|string',
-            'lang'      => ['required', 'string', 'regex:/^([a-zA-Z]{2}|[iI]-[a-zA-Z]+|[xX]-[a-zA-Z]{1,8})(-[a-zA-Z]{1,8})*/i'],
-            'formatid'  => 'sometimes|string',
+            'required' => [
+                ['version'],
+                ['lang'],
+            ],
+            'regex' => [
+                ['lang', '/^([a-zA-Z]{2}|[iI]-[a-zA-Z]+|[xX]-[a-zA-Z]{1,8})(-[a-zA-Z]{1,8})*/i'],
+            ],
         ];
     }
 }

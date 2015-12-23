@@ -23,8 +23,20 @@ class RegistryHandle extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'registry'          => 'required|in:internic,apnic,arin,lacnic,ripe,afrinic,local,ext-value',
-            'ext-registry'      => 'required_if:registry,ext-value|string',
+            'in' => [
+                ['registry',
+                    [
+                        'internic',
+                        'apnic',
+                        'arin',
+                        'lacnic',
+                        'ripe',
+                        'afrinic',
+                        'local',
+                        'ext-value',
+                    ]
+                ],
+            ],
         ];
     }
 
@@ -35,7 +47,7 @@ class RegistryHandle extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => 'required|string',
+            'required' => 'value',
         ];
     }
 }

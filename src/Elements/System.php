@@ -32,11 +32,34 @@ class System extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'restriction'   => 'sometimes|in:public,need-to-know,private,default',
-            'category'      => 'required|in:source,target,intermediate,sensor,infrastructure,ext-value',
-            'ext-category'  => 'required_if:category,ext-value|string',
-            'interface'     => 'sometimes|string',
-            'spoofed'       => 'sometimes|in:unknown,yes,no',
+            'required' => 'category',
+            'in' => [
+                ['category',
+                    [
+                        'source',
+                        'target',
+                        'intermediate',
+                        'sensor',
+                        'infrastructure',
+                        'ext-value',
+                    ]
+                ],
+                ['restriction',
+                    [
+                        'default',
+                        'public',
+                        'need-to-know',
+                        'private',
+                    ]
+                ],
+                ['spoofed',
+                    [
+                        'unknown',
+                        'yes',
+                        'no',
+                    ]
+                ],
+            ],
         ];
     }
 }

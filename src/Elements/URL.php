@@ -15,7 +15,8 @@ class URL extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => 'required|URL',
+            'required' => 'value',
+            'url' => 'value',
         ];
     }
 }

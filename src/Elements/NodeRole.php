@@ -23,8 +23,29 @@ class NodeRole extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'category'      => 'required|in:client,server-internal,server-public,www,mail,messaging,streaming,voice,file,ftp,p2p,name,directory,credential,print,application,ext-value',
-            'ext-category'  => 'required_if:category,ext-value|string',
+            'in' => [
+                ['category',
+                    [
+                        'client',
+                        'server-internal',
+                        'server-public',
+                        'www',
+                        'mail',
+                        'messaging',
+                        'streaming',
+                        'voice',
+                        'file',
+                        'ftp',
+                        'p2p',
+                        'name',
+                        'directory',
+                        'credential',
+                        'print',
+                        'application',
+                        'ext-value',
+                    ]
+                ],
+            ],
         ];
     }
 
@@ -35,7 +56,7 @@ class NodeRole extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => 'required|string',
+            'required' => 'value',
         ];
     }
 }

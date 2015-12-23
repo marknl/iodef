@@ -29,7 +29,8 @@ class Service extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'ip_protocol' => 'required|integer',
+            'required'  => 'ip_protocol',
+            'integer'   => 'ip_protocol',
         ];
     }
 }

@@ -37,11 +37,37 @@ class Contact extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'role'          => 'required|in:creator,admin,tech,irt,cc,ext-value',
-            'ext-role'      => 'required_if:role,ext-value|string',
-            'type'          => 'required|in:person,organization,ext-value',
-            'ext-type'      => 'required_if:type,ext-value|string',
-            'restriction'   => 'sometimes|in:public,need-to-know,private,default',
+            'required' => [
+                ['role'],
+                ['type']
+            ],
+            'in' => [
+                ['role',
+                    [
+                        'creator',
+                        'admin',
+                        'tech',
+                        'irt',
+                        'cc',
+                        'ext-value',
+                    ]
+                ],
+                ['type',
+                    [
+                        'person',
+                        'organization',
+                        'ext-value',
+                    ]
+                ],
+                ['restriction',
+                    [
+                        'default',
+                        'public',
+                        'need-to-know',
+                        'private',
+                    ]
+                ],
+            ],
         ];
     }
 }

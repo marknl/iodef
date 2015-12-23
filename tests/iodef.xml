@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<IODEF-Document
+    xmlns="urn:ietf:params:xml:ns:iodef-1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    version="1.00" lang="en">
+    <Incident purpose="mitigation" restriction="private">
+        <IncidentID name="csirt.example.com" restriction="public">908711</IncidentID>
+        <ReportTime>2006-06-08T05:44:53-05:00</ReportTime>
+        <Description>Large bot-net</Description>
+        <Assessment occurrence="actual">
+            <Impact severity="high" completion="succeeded" type="dos"/>
+        </Assessment>
+        <Method>
+            <Reference>
+                <ReferenceName>GT Bot</ReferenceName>
+            </Reference>
+            <Reference>
+                <ReferenceName>CA-2003-22</ReferenceName>
+                <URL>http://www.cert.org/advisories/CA-2003-22.html</URL>
+                <Description>Root compromise via this IE vulnerability to install the GT Bot</Description>
+            </Reference>
+        </Method>
+        <Contact role="irt" type="person">
+            <ContactName>Joe Smith</ContactName>
+            <Email>jsmith@csirt.example.com</Email>
+        </Contact>
+        <EventData>
+            <Description>
+                These hosts are compromised and acting as bots communicating with irc.example.com.
+            </Description>
+            <Expectation action="investigate">
+                <Description>Confirm the source and take machines off-line and remediate</Description>
+            </Expectation>
+        </EventData>
+    </Incident>
+</IODEF-Document>

@@ -15,7 +15,7 @@ class Location extends IodefElement
     public static function getValueRule()
     {
         return [
-            'value' => 'required|string',
+            'required' => 'value',
         ];
     }
 }

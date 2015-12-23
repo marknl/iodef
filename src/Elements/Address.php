@@ -25,10 +25,26 @@ class Address extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'category'      => 'required|in:asn,atm,e-mail,ipv4-addr,ipv4-net,ipv4-net-mask,ipv6-addr,ipv6-net,ipv6-net-mask,mac,ext-value',
-            'ext-category'  => 'required_if:category,ext-value|string',
-            'vlan-name'     => 'sometimes|string',
-            'vlan-num'      => 'sometimes|string',
+            'required' => [
+                'required' => 'category',
+            ],
+            'in' => [
+                ['category',
+                    [
+                        'asn',
+                        'atm',
+                        'e-mail',
+                        'ipv4-addr',
+                        'ipv4-net',
+                        'ipv4-net-mask',
+                        'ipv6-addr',
+                        'ipv6-net',
+                        'ipv6-net-mask',
+                        'mac',
+                        'ext-value',
+                    ]
+                ],
+            ],
         ];
     }
 
@@ -39,7 +55,7 @@ class Address extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => 'required|string',
+            'required' => 'value',
         ];
     }
 }

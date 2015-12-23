@@ -5,8 +5,7 @@ namespace Marknl\Iodef;
 use Sabre\Xml\Reader as SabreReader;
 use Sabre\Xml\Writer as SabreWriter;
 use Sabre\Xml\Element as SabreElement;
-use Valitron\Validator;
-use Error;
+use Valitron\Validator as Validator;
 
 /**
  * IODEF Element class.
@@ -94,7 +93,7 @@ abstract class IodefElement implements SabreElement
                 $this->{$class} = $child;
             }
         } else {
-            throw new Error($this->getShortName(get_called_class()) .": {$class} is not allowed as child a element.");
+            die($this->getShortName(get_called_class()) .": {$class} is not allowed as child a element.");
         }
     }
 
@@ -116,7 +115,7 @@ abstract class IodefElement implements SabreElement
                             'value'         => $this->$element
                         ];
                     } else {
-                        throw new Error(
+                        die(
                             $this->getShortName(get_called_class()) .": Required element '{$element}' missing."
                         );
                     }
@@ -140,7 +139,7 @@ abstract class IodefElement implements SabreElement
                             ];
                         }
                     } else {
-                        throw new Error(
+                        die(
                             $this->getShortName(get_called_class()) .": Required element '{$element}' missing."
                         );
                     }
@@ -157,7 +156,7 @@ abstract class IodefElement implements SabreElement
                     }
                     break;
                 default:
-                    throw new Error(
+                    die(
                         $this->getShortName(get_called_class()) .": Unknown occurence type for element {$element}."
                     );
             }
@@ -194,7 +193,9 @@ abstract class IodefElement implements SabreElement
                 }
             }
         } else {
-            $IodefElement->value = $innerData;
+            if (!empty($innerData)) {
+                $IodefElement->value = $innerData;
+            }
         }
 
         return $IodefElement;
@@ -211,12 +212,14 @@ abstract class IodefElement implements SabreElement
         if ($this->validate() === true) {
             // Start serializing all allowed child elements
             if (empty($this->elements)) {
-                $writer->write($this->value);
+                if (property_exists($this, 'value')) {
+                    $writer->write($this->value);
+                }
             } else {
                 $writer->write($this->getChildren());
             }
         } else {
-            throw new Error($this->getShortName(). ": Validation failed, see details above.");
+            die($this->getShortName(). ": Validation failed, see details above.");
         }
     }
 
@@ -228,27 +231,39 @@ abstract class IodefElement implements SabreElement
     {
         // If attributes are set, validate them.
         if (!empty($this->attributes)) {
-            $validate_attributes = Validator::make($this->attributes, $this->getAttributeRules());
+            // It's possible that there are no rules for the attributes available.
+            // If so, skip attribute validation.
+            if (sizeof($this->getAttributeRules()) > 0) {
+                $validate_attributes = new Validator($this->attributes);
+                $validate_attributes->rules($this->getAttributeRules());
 
-            if ($validate_attributes->fails()) {
-                echo 'Some attributes failed to pass the validator:';
-                foreach ($validate_attributes->messages()->all() as $message) {
-                    echo ' '. $message;
+                // Validation failed to succeeed, show errors
+                if (!$validate_attributes->validate()) {
+                    echo 'Some attributes failed to pass the validator:';
+                    foreach ($validate_attributes->errors() as $failed_attr) {
+                        echo ' '. $failed_attr[0];
+                    }
+                    return false;
                 }
-                return false;
             }
         }
 
         // If a value is set, validate it.
         if (array_key_exists('value', $this)) {
-            $validate_value = Validator::make(['value' => $this->value], $this->getValueRule());
+            // It's possible that there is no value rule set.
+            // If so, skip value validation.
+            if (sizeof($this->getValueRule()) > 0) {
+                $validate_value = new Validator(['value' => $this->value]);
+                $validate_value->rules($this->getValueRule());
 
-            if ($validate_value->fails()) {
-                echo 'The value failed to pass the validator:';
-                foreach ($validate_value->messages()->all() as $message) {
-                    echo ' '. $message;
+                // Validation failed to succeeed, show errors
+                if (!$validate_value->validate()) {
+                    echo 'The value failed to pass the validator:';
+                    foreach ($validate_value->errors() as $message) {
+                        echo ' '. $message;
+                    }
+                    return false;
                 }
-                return false;
             }
         }
 

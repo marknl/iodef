@@ -15,7 +15,14 @@ class Port extends IodefElement
     public static function getValueRule()
     {
         return [
-            'value' => 'required|integer|between:1,65535',
+            'required'  => 'value',
+            'integer'   => 'value',
+            'min' => [
+                ['value' => 1]
+            ],
+            'max' => [
+                ['value' => 65535]
+            ],
         ];
     }
 }

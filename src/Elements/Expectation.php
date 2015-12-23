@@ -30,10 +30,43 @@ class Expectation extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'restriction'   => 'sometimes|in:public,need-to-know,private,default',
-            'severity'      => 'sometimes|in:low,medium,high',
-            'action'        => 'sometimes|in:nothing,contact-source-site,contact-target-site,contact-sender,investigate,block-host,block-network,block-port,rate-limit-host,rate-limit-network,rate-limit-port,remediate-other,status-triage,status-new-info,other,ext-value',
-            'ext-action'    => 'required_if:action,ext-value',
+            'in' => [
+                ['restriction',
+                    [
+                        'default',
+                        'public',
+                        'need-to-know',
+                        'private',
+                    ]
+                ],
+                ['severity',
+                    [
+                        'low',
+                        'medium',
+                        'high',
+                    ],
+                ],
+                ['action',
+                    [
+                        'nothing',
+                        'contact-source-site',
+                        'contact-target-site',
+                        'contact-sender',
+                        'investigate',
+                        'block-host',
+                        'block-network',
+                        'block-port',
+                        'rate-limit-host',
+                        'rate-limit-network',
+                        'rate-limit-port',
+                        'remediate-other',
+                        'status-triage',
+                        'status-new-info',
+                        'other',
+                        'ext-value',
+                    ],
+                ],
+            ],
         ];
     }
 }

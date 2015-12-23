@@ -24,9 +24,17 @@ class IncidentID extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'name'          => 'required|string',
-            'instance'      => 'sometimes|string',
-            'restriction'   => 'sometimes|in:default,public,need-to-know,private',
+            'required' => 'name',
+            'in' => [
+                ['restriction',
+                    [
+                        'default',
+                        'public',
+                        'need-to-know',
+                        'private'
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -37,7 +45,7 @@ class IncidentID extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => 'required|string',
+            'required' => 'value',
         ];
     }
 }

@@ -23,8 +23,16 @@ class MonetaryImpact extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'severity' => 'sometimes|in:low,medium,high',
-            'currency' => 'required|string',
+            'required' => 'currency',
+            'in' => [
+                ['severity',
+                    [
+                        'low',
+                        'medium',
+                        'high',
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -35,7 +43,10 @@ class MonetaryImpact extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => ['required', 'regex:/^-?(?:\d+|\d*\.\d+)$/'],
+            'required' => 'value',
+            'regex' => [
+                ['value', '/^-?(?:\d+|\d*\.\d+)$/']
+            ],
         ];
     }
 }

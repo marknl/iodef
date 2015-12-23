@@ -34,7 +34,16 @@ class EventData extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'restriction'   => 'sometimes|in:public,need-to-know,private,default',
+            'in' => [
+                ['restriction',
+                    [
+                        'default',
+                        'public',
+                        'need-to-know',
+                        'private',
+                    ]
+                ],
+            ],
         ];
     }
 }

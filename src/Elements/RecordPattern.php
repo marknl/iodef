@@ -41,12 +41,28 @@ class RecordPattern extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'type'              => 'required|in:regex,binary,xpath,ext-value',
-            'ext-type'          => 'required_if:type,ext-value',
-            'offset'            => 'sometimes|integer',
-            'offsetunit'        => 'sometimes|in:line,binary,ext-value',
-            'ext-offsetunit'    => 'required_if:offsetunit,ext-value',
-            'instance'          => 'sometimes|integer',
+            'required' => 'type',
+            'integer' => [
+                ['offset'],
+                ['instance']
+            ],
+            'in' => [
+                ['type',
+                    [
+                        'regex',
+                        'binary',
+                        'xpath',
+                        'ext-value',
+                    ]
+                ],
+                ['offsetunit',
+                    [
+                        'line',
+                        'binary',
+                        'ext-value',
+                    ]
+                ],
+            ],
         ];
     }
 
@@ -57,7 +73,7 @@ class RecordPattern extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => 'required|string',
+            'required' => 'value',
         ];
     }
 }

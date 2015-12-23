@@ -24,7 +24,16 @@ class AlternativeID extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'restriction' => 'sometimes|in:default,public,need-to-know,private',
+            'in' => [
+                ['restriction',
+                    [
+                        'default',
+                        'public',
+                        'need-to-know',
+                        'private'
+                    ]
+                ],
+            ],
         ];
     }
 }

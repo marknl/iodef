@@ -40,10 +40,29 @@ class Incident extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'purpose'       => 'required|in:traceback,mitigation,reporting,other,ext-value',
-            'ext-purpose'   => 'required_if:purpose,ext-value|string',
-            'lang'          => ['sometimes', 'string', 'regex:/^([a-zA-Z]{2}|[iI]-[a-zA-Z]+|[xX]-[a-zA-Z]{1,8})(-[a-zA-Z]{1,8})*/i'],
-            'restriction'   => 'sometimes|in:default,public,need-to-know,private',
+            'required' => 'purpose',
+            'in' => [
+                ['purpose',
+                    [
+                        'traceback',
+                        'mitigation',
+                        'reporting',
+                        'other',
+                        'ext-value'
+                    ]
+                ],
+                ['restriction',
+                    [
+                        'default',
+                        'public',
+                        'need-to-know',
+                        'private'
+                    ]
+                ],
+            ],
+            'regex' => [
+                ['lang', '/^([a-zA-Z]{2}|[iI]-[a-zA-Z]+|[xX]-[a-zA-Z]{1,8})(-[a-zA-Z]{1,8})*/i']
+            ],
         ];
     }
 }

@@ -15,7 +15,7 @@ class Description extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => 'required|string'
+            'required' => 'value',
         ];
     }
 }

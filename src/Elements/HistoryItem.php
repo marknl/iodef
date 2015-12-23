@@ -30,9 +30,37 @@ class HistoryItem extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'restriction'   => 'sometimes|in:default,public,need-to-know,private',
-            'action'        => 'required|in:nothing,contact-source-site,contact-target-site,contact-sender,investigate,block-host,block-network,block-port,rate-limit-host,rate-limit-network,rate-limit-port,remediate-other,status-triage,status-new-info,other,ext-value',
-            'ext-action'    => 'required_if:action,ext-value',
+            'required' => 'action',
+            'in' => [
+                ['restriction',
+                    [
+                        'default',
+                        'public',
+                        'need-to-know',
+                        'private'
+                    ]
+                ],
+                ['action',
+                    [
+                        'nothing',
+                        'contact-source-site',
+                        'contact-target-site',
+                        'contact-sender',
+                        'investigate',
+                        'block-host',
+                        'block-network',
+                        'block-port',
+                        'rate-limit-host',
+                        'rate-limit-network',
+                        'rate-limit-port',
+                        'remediate-other',
+                        'status-triage',
+                        'status-new-info',
+                        'other',
+                        'ext-value',
+                    ],
+                ],
+            ],
         ];
     }
 }

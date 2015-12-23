@@ -26,11 +26,37 @@ class Counter extends IodefElement
     public static function getAttributeRules()
     {
         return [
-            'type'          => 'required|in:byte,packet,flow,session,alert,message,event,host,site,organization,ext-value',
-            'ext-type'      => 'required_if:type,ext-value|string',
-            'meaning'       => 'sometimes|string',
-            'duration'      => 'sometimes|in:second,minute,hour,day,month,quarter,year,ext-value',
-            'ext-duration'  => 'required_if:duration,ext-value|string',
+            'required' => 'type',
+            'in' => [
+                ['type',
+                    [
+                        'byte',
+                        'packet',
+                        'flow',
+                        'session',
+                        'alert',
+                        'message',
+                        'event',
+                        'host',
+                        'site',
+                        'organization',
+                        'ext-value',
+
+                    ]
+                ],
+                ['duration',
+                    [
+                        'second',
+                        'minute',
+                        'hour',
+                        'day',
+                        'month',
+                        'quarter',
+                        'year',
+                        'ext-value',
+                    ]
+                ],
+            ],
         ];
     }
 
@@ -41,7 +67,10 @@ class Counter extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => ['required', 'regex:/^-?(?:\d+|\d*\.\d+)$/'],
+            'required' => 'value',
+            'regex' => [
+                ['value', '/^-?(?:\d+|\d*\.\d+)$/']
+            ],
         ];
     }
 }

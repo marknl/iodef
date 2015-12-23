@@ -21,9 +21,7 @@ class Fax extends IodefElement
      */
     public function getAttributeRules()
     {
-        return [
-            'meaning' => 'sometimes|string',
-        ];
+        return [];
     }
 
     /**
@@ -33,7 +31,7 @@ class Fax extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => 'required|string',
+            'required' => 'value',
         ];
     }
 }

@@ -33,7 +33,10 @@ class Timezone extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => ['required', 'regex:/Z|[\+\-](0[0-9]|1[0-4]):[0-5][0-9]/'],
+            'required' => 'value',
+            'regex' => [
+                ['value', '/Z|[\+\-](0[0-9]|1[0-4]):[0-5][0-9]/'],
+            ],
         ];
     }
 }

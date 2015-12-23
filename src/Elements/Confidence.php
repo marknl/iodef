@@ -37,7 +37,17 @@ class Confidence extends IodefElement
     public static function getAttributeRules()
     {
         return [
-            'rating' => 'required|in:low,medium,high,numeric',
+            'required' => 'rating',
+            'in' => [
+                ['rating',
+                    [
+                        'low',
+                        'medium',
+                        'high',
+                        'numeric'
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -48,7 +58,10 @@ class Confidence extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => ['required', 'regex:/^-?(?:\d+|\d*\.\d+)$/'],
+            'required' => 'value',
+            'regex' => [
+                ['value', '/^-?(?:\d+|\d*\.\d+)$/']
+            ],
         ];
     }
 }

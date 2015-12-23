@@ -26,11 +26,39 @@ class TimeImpact extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'severity'      => 'sometimes|in:low,medium,high',
-            'metric'        => 'required|in:labor,elapsed,downtime,ext-value',
-            'ext-metric'    => 'required_if:metric,ext-value|string',
-            'duration'      => 'required|in:second,minute,hour,day,month,quarter,year,ext-value',
-            'ext-duration'  => 'required_if:duration,ext-value|string',
+            'required' => [
+                ['metric'],
+                ['duration'],
+            ],
+            'in' => [
+                ['severity',
+                    [
+                        'low',
+                        'medium',
+                        'high',
+                    ],
+                ],
+                ['metric',
+                    [
+                        'labor',
+                        'elapsed',
+                        'downtime',
+                        'ext-value',
+                    ],
+                ],
+                ['duration',
+                    [
+                        'second',
+                        'minute',
+                        'hour',
+                        'day',
+                        'month',
+                        'quarter',
+                        'year',
+                        'ext-value',
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -41,7 +69,10 @@ class TimeImpact extends IodefElement
     public function getValueRule()
     {
         return [
-            'value' => ['required', 'regex:/^-?(?:\d+|\d*\.\d+)$/'],
+            'required' => 'value',
+            'regex' => [
+                ['value', '/^-?(?:\d+|\d*\.\d+)$/']
+            ],
         ];
     }
 }

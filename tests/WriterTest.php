@@ -1,12 +1,10 @@
 <?php
 
-//namespace Marknl\Iodef\Tests;
-
 class WriterTest extends PHPUnit_Framework_TestCase
 {
     public function testWriter()
     {
-        $this->document = new Marknl\Iodef\Elements\IODEFDocument();
+        $Document = new Marknl\Iodef\Elements\IODEFDocument();
 
         $Incident = new Marknl\Iodef\Elements\Incident();
         $Incident->setAttributes(['purpose' => 'mitigation']);
@@ -29,6 +27,8 @@ class WriterTest extends PHPUnit_Framework_TestCase
                 $Impact = new Marknl\Iodef\Elements\Impact();
                 $Impact->setAttributes(['type' => 'dos', 'severity' => 'high', 'completion' => 'succeeded']);
                 $Assessment->addChild($Impact);
+
+            $Incident->addChild($Assessment);
 
             $Method = new Marknl\Iodef\Elements\Method();
 
@@ -55,6 +55,8 @@ class WriterTest extends PHPUnit_Framework_TestCase
                     $Reference->addChild($Description);
 
                 $Method->addChild($Reference);
+
+            $Incident->addChild($Method);
 
             $Contact = new Marknl\Iodef\Elements\Contact();
             $Contact->setAttributes(['role' => 'irt', 'type' => 'person']);
@@ -139,17 +141,23 @@ class WriterTest extends PHPUnit_Framework_TestCase
 
             $Incident->addChild($EventData);
 
-        $this->document->addChild($Incident);
+        $Document->addChild($Incident);
 
         $iodef = new Marknl\Iodef\Writer();
         $iodef->write([
             [
                 'name' => 'IODEF-Document',
-                'attributes' => $this->document->getAttributes(),
-                'value' => $this->document,
+                'attributes' => $Document->getAttributes(),
+                'value' => $Document,
             ]
         ]);
 
-        echo $iodef->outputMemory();
+        $expected = new DOMDocument;
+        $expected->loadXML(file_get_contents(__DIR__.'/iodef.xml'));
+
+        $actual = new DOMDocument;
+        $actual->loadXML($iodef->outputMemory());
+
+        $this->assertEqualXMLStructure($expected->firstChild, $actual->firstChild, true);
     }
 }

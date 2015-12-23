@@ -29,14 +29,6 @@ class OperatingSystem extends IodefElement
      */
     public function getAttributeRules()
     {
-        return [
-            'swid'      => 'sometimes|string',
-            'configid'  => 'sometimes|string',
-            'vendor'    => 'sometimes|string',
-            'family'    => 'sometimes|string',
-            'name'      => 'sometimes|string',
-            'version'   => 'sometimes|string',
-            'patch'     => 'sometimes|string',
-        ];
+        return [];
     }
 }

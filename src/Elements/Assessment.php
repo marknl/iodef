@@ -30,8 +30,22 @@ class Assessment extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'occurrence'    => 'sometimes|in:actual,potential',
-            'restriction'   => 'sometimes|in:default,public,need-to-know,private',
+            'in' => [
+                ['occurrence',
+                    [
+                        'actual',
+                        'potential',
+                    ]
+                ],
+                ['restriction',
+                    [
+                        'default',
+                        'public',
+                        'need-to-know',
+                        'private',
+                    ]
+                ],
+            ],
         ];
     }
 }
