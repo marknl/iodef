@@ -5,7 +5,7 @@ namespace Marknl\Iodef;
 use Sabre\Xml\Reader as SabreReader;
 use Sabre\Xml\Writer as SabreWriter;
 use Sabre\Xml\Element as SabreElement;
-use Illuminate\Validation;
+use Valitron\Validator;
 use Error;
 
 /**
