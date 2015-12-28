@@ -25,7 +25,7 @@ class Incident extends IodefElement
             'ReportTime'        => 'REQUIRED',
             'Description'       => 'OPTIONAL_MULTI',
             'Assessment'        => 'REQUIRED_MULTI',
-            'Method'            => 'REQUIRED_MULTI',
+            'Method'            => 'OPTIONAL_MULTI',
             'Contact'           => 'REQUIRED_MULTI',
             'EventData'         => 'OPTIONAL_MULTI',
             'History'           => 'OPTIONAL',
