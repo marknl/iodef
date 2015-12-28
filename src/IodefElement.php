@@ -21,7 +21,7 @@ abstract class IodefElement implements SabreElement
      * The IODEF namespace as described in rfc-5070
      * @var string
      */
-    protected $ns = 'urn:ietf:params:xml:ns:iodef-1.0';
+    protected $ns = '{urn:ietf:params:xml:ns:iodef-1.0}';
 
     /**
      * All atributes allowed for the element extending this class according
