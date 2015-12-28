@@ -13,6 +13,12 @@ use Sabre\Xml\Writer as SabreWriter;
  */
 class Writer extends SabreWriter
 {
+    /**
+     * Should we format the XML output via a DOMDocument.
+     * @var boolval
+     */
+    public $formatOutput = false;
+
     public function __construct()
     {
         $this->openMemory();
@@ -21,5 +27,24 @@ class Writer extends SabreWriter
             'urn:ietf:params:xml:ns:iodef-1.0' => 'iodef',
             'http://www.w3.org/2001/XMLSchema-instance' => 'xsi',
         ];
+    }
+
+    /**
+     * Overwrite the original method, so we can add some output
+     * formatting for the XML.
+     * @param  boolval $flush Flush memory after
+     * @return string
+     */
+    public function outputMemory($flush = false)
+    {
+        // Beautify the XML output
+        if ($this->formatOutput === true) {
+            $dom = new \DOMDocument;
+            $dom->formatOutput = true;
+            $dom->loadXML(parent::outputMemory($flush));
+            return $dom->saveXML();
+        } else {
+            return parent::outputMemory($flush);
+        }
     }
 }
