@@ -16,7 +16,7 @@ class IODEFDocument extends IodefElement
     {
         $this->attributes = [
             'version'   => '1.00',
-            'lang'      => 'en',
+            'lang'      => 'en-US',
             'formatid'  => '',
         ];
 
