@@ -18,7 +18,7 @@ class Writer extends SabreWriter
         $this->openMemory();
         $this->startDocument();
         $this->namespaceMap = [
-            'urn:ietf:params:xml:ns:iodef-1.0' => '',
+            'urn:ietf:params:xml:ns:iodef-1.0' => 'iodef',
             'http://www.w3.org/2001/XMLSchema-instance' => 'xsi',
         ];
     }

@@ -18,6 +18,12 @@ use Valitron\Validator as Validator;
 abstract class IodefElement implements SabreElement
 {
     /**
+     * The IODEF namespace as described in rfc-5070
+     * @var string
+     */
+    protected $ns = 'urn:ietf:params:xml:ns:iodef-1.0';
+
+    /**
      * All atributes allowed for the element extending this class according
      * to rfc-5070.
      * @var array
@@ -110,7 +116,7 @@ abstract class IodefElement implements SabreElement
                 case 'REQUIRED':
                     if (property_exists($this, $element)) {
                         $retArray[] = [
-                            'name'          => $element,
+                            'name'          => $this->ns.$element,
                             'attributes'    => array_filter($this->$element->attributes),
                             'value'         => $this->$element
                         ];
@@ -123,7 +129,7 @@ abstract class IodefElement implements SabreElement
                 case 'OPTIONAL':
                     if (property_exists($this, $element)) {
                         $retArray[] = [
-                            'name'          => $element,
+                            'name'          => $this->ns.$element,
                             'attributes'    => array_filter($this->$element->attributes),
                             'value'         => $this->$element
                         ];
@@ -133,7 +139,7 @@ abstract class IodefElement implements SabreElement
                     if (property_exists($this, $element)) {
                         foreach ($this->$element as $child) {
                             $retArray[] = [
-                                'name'          => $element,
+                                'name'          => $this->ns.$element,
                                 'attributes'    => array_filter($child->attributes),
                                 'value'         => $child
                             ];
@@ -148,7 +154,7 @@ abstract class IodefElement implements SabreElement
                     if (property_exists($this, $element)) {
                         foreach ($this->$element as $child) {
                             $retArray[] = [
-                                'name'          => $element,
+                                'name'          => $this->ns.$element,
                                 'attributes'    => array_filter($child->attributes),
                                 'value'         => $child
                             ];
