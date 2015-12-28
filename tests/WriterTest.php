@@ -146,7 +146,7 @@ class WriterTest extends PHPUnit_Framework_TestCase
         $iodef = new Marknl\Iodef\Writer();
         $iodef->write([
             [
-                'name' => 'IODEF-Document',
+                'name' => 'iodef:IODEF-Document',
                 'attributes' => $Document->getAttributes(),
                 'value' => $Document,
             ]
