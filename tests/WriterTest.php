@@ -85,7 +85,10 @@ class WriterTest extends PHPUnit_Framework_TestCase
                         $Node = new Marknl\Iodef\Elements\Node();
 
                             $Address = new Marknl\Iodef\Elements\Address();
-                            $Address->setAttributes(['category' => 'ipv4-addr']);
+                            //$Address->setAttributes(['category' => 'ipv4-addr']);
+
+                            $meh['category'] = 'ipv4-addr';
+                            $Address->setAttributes($meh);
                             $Address->value('192.0.2.3');
                             $Node->addChild($Address);
 
@@ -101,6 +104,8 @@ class WriterTest extends PHPUnit_Framework_TestCase
                         $System->addChild($Description);
 
                     $Flow->addChild($System);
+
+                $EventData->addChild($Flow);
 
                 $Flow = new Marknl\Iodef\Elements\Flow();
 
@@ -129,6 +134,8 @@ class WriterTest extends PHPUnit_Framework_TestCase
                         $System->addChild($Description);
 
                     $Flow->addChild($System);
+
+                $EventData->addChild($Flow);
 
                 $Expectation = new Marknl\Iodef\Elements\Expectation();
                 $Expectation->setAttributes(['action' => 'investigate']);

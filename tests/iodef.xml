@@ -23,6 +23,25 @@
     </iodef:Contact>
     <iodef:EventData>
       <iodef:Description>These hosts are compromised and acting as bots communicating with irc.example.com.</iodef:Description>
+      <iodef:Flow>
+        <iodef:System category="source" spoofed="unknown">
+          <iodef:Node>
+            <iodef:Address category="ipv4-addr">192.0.2.3</iodef:Address>
+          </iodef:Node>
+          <iodef:Counter type="byte" duration="second">250000</iodef:Counter>
+          <iodef:Description>Sample description for this contact.</iodef:Description>
+        </iodef:System>
+      </iodef:Flow>
+      <iodef:Flow>
+        <iodef:System category="intermediate" spoofed="unknown">
+          <iodef:Node>
+            <iodef:NodeName>irc.example.com</iodef:NodeName>
+            <iodef:Address category="ipv4-addr">192.0.2.20</iodef:Address>
+            <iodef:DateTime>2006-06-08T01:01:03-05:00</iodef:DateTime>
+          </iodef:Node>
+          <iodef:Description>IRC server on #give-me-cmd channel</iodef:Description>
+        </iodef:System>
+      </iodef:Flow>
       <iodef:Expectation action="investigate">
         <iodef:Description>Confirm the source and take machines off-line and remediate</iodef:Description>
       </iodef:Expectation>

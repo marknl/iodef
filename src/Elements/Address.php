@@ -25,9 +25,7 @@ class Address extends IodefElement
     public function getAttributeRules()
     {
         return [
-            'required' => [
-                'required' => 'category',
-            ],
+            'required' => 'category',
             'in' => [
                 ['category',
                     [
