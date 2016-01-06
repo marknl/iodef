@@ -28,7 +28,7 @@ class ReaderTest extends PHPUnit_Framework_TestCase
         $iodef_write = new Marknl\Iodef\Writer();
         $iodef_write->write([
             [
-                'name' => 'iodef:IODEF-Document',
+                'name' => 'IODEF-Document',
                 'attributes' => $iodef_read['value']->getAttributes(),
                 'value' => $iodef_read['value'],
             ]

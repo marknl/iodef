@@ -85,10 +85,7 @@ class WriterTest extends PHPUnit_Framework_TestCase
                         $Node = new Marknl\Iodef\Elements\Node();
 
                             $Address = new Marknl\Iodef\Elements\Address();
-                            //$Address->setAttributes(['category' => 'ipv4-addr']);
-
-                            $meh['category'] = 'ipv4-addr';
-                            $Address->setAttributes($meh);
+                            $Address->setAttributes(['category' => 'ipv4-addr']);
                             $Address->value('192.0.2.3');
                             $Node->addChild($Address);
 
@@ -153,7 +150,7 @@ class WriterTest extends PHPUnit_Framework_TestCase
         $iodef = new Marknl\Iodef\Writer();
         $iodef->write([
             [
-                'name' => 'iodef:IODEF-Document',
+                'name' => 'IODEF-Document',
                 'attributes' => $Document->getAttributes(),
                 'value' => $Document,
             ]

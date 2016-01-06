@@ -1,7 +1,7 @@
 {
     "name": "marknl/iodef",
     "description": "Library for parsing IODEF in PHP",
-    "version": "1.0.2-dev",
+    "version": "1.0.3-dev",
     "keywords": ["iodef", "rfc5070"],
     "homepage": "http://e-rave.nl/iodef",
     "type": "library",

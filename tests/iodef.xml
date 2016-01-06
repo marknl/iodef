@@ -1,50 +1,50 @@
 <?xml version="1.0"?>
-<iodef:IODEF-Document xmlns:iodef="urn:ietf:params:xml:ns:iodef-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.00" lang="en-US">
-  <iodef:Incident purpose="mitigation" restriction="private">
-    <iodef:IncidentID name="csirt.example.com" restriction="public">908711</iodef:IncidentID>
-    <iodef:ReportTime>2006-06-08T05:44:53-05:00</iodef:ReportTime>
-    <iodef:Description>Large bot-net</iodef:Description>
-    <iodef:Assessment occurrence="actual">
-      <iodef:Impact severity="high" completion="succeeded" type="dos"/>
-    </iodef:Assessment>
-    <iodef:Method>
-      <iodef:Reference>
-        <iodef:ReferenceName>GT Bot</iodef:ReferenceName>
-      </iodef:Reference>
-      <iodef:Reference>
-        <iodef:ReferenceName>CA-2003-22</iodef:ReferenceName>
-        <iodef:URL>http://www.cert.org/advisories/CA-2003-22.html</iodef:URL>
-        <iodef:Description>Root compromise via this IE vulnerability to install the GT Bot</iodef:Description>
-      </iodef:Reference>
-    </iodef:Method>
-    <iodef:Contact role="irt" type="person">
-      <iodef:ContactName>Joe Smith</iodef:ContactName>
-      <iodef:Email>jsmith@csirt.example.com</iodef:Email>
-    </iodef:Contact>
-    <iodef:EventData>
-      <iodef:Description>These hosts are compromised and acting as bots communicating with irc.example.com.</iodef:Description>
-      <iodef:Flow>
-        <iodef:System category="source" spoofed="unknown">
-          <iodef:Node>
-            <iodef:Address category="ipv4-addr">192.0.2.3</iodef:Address>
-          </iodef:Node>
-          <iodef:Counter type="byte" duration="second">250000</iodef:Counter>
-          <iodef:Description>Sample description for this contact.</iodef:Description>
-        </iodef:System>
-      </iodef:Flow>
-      <iodef:Flow>
-        <iodef:System category="intermediate" spoofed="unknown">
-          <iodef:Node>
-            <iodef:NodeName>irc.example.com</iodef:NodeName>
-            <iodef:Address category="ipv4-addr">192.0.2.20</iodef:Address>
-            <iodef:DateTime>2006-06-08T01:01:03-05:00</iodef:DateTime>
-          </iodef:Node>
-          <iodef:Description>IRC server on #give-me-cmd channel</iodef:Description>
-        </iodef:System>
-      </iodef:Flow>
-      <iodef:Expectation action="investigate">
-        <iodef:Description>Confirm the source and take machines off-line and remediate</iodef:Description>
-      </iodef:Expectation>
-    </iodef:EventData>
-  </iodef:Incident>
-</iodef:IODEF-Document>
+<IODEF-Document xmlns="urn:ietf:params:xml:ns:iodef-1.0" xmlns:sci="urn:ietf:params:xml:ns:iodef-sci-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.00" lang="en-US">
+  <Incident purpose="mitigation" restriction="private">
+    <IncidentID name="csirt.example.com" restriction="public">908711</IncidentID>
+    <ReportTime>2006-06-08T05:44:53-05:00</ReportTime>
+    <Description>Large bot-net</Description>
+    <Assessment occurrence="actual">
+      <Impact severity="high" completion="succeeded" type="dos"/>
+    </Assessment>
+    <Method>
+      <Reference>
+        <ReferenceName>GT Bot</ReferenceName>
+      </Reference>
+      <Reference>
+        <ReferenceName>CA-2003-22</ReferenceName>
+        <URL>http://www.cert.org/advisories/CA-2003-22.html</URL>
+        <Description>Root compromise via this IE vulnerability to install the GT Bot</Description>
+      </Reference>
+    </Method>
+    <Contact role="irt" type="person">
+      <ContactName>Joe Smith</ContactName>
+      <Email>jsmith@csirt.example.com</Email>
+    </Contact>
+    <EventData>
+      <Description>These hosts are compromised and acting as bots communicating with irc.example.com.</Description>
+      <Flow>
+        <System category="source" spoofed="unknown">
+          <Node>
+            <Address category="ipv4-addr">192.0.2.3</Address>
+          </Node>
+          <Counter type="byte" duration="second">250000</Counter>
+          <Description>Sample description for this contact.</Description>
+        </System>
+      </Flow>
+      <Flow>
+        <System category="intermediate" spoofed="unknown">
+          <Node>
+            <NodeName>irc.example.com</NodeName>
+            <Address category="ipv4-addr">192.0.2.20</Address>
+            <DateTime>2006-06-08T01:01:03-05:00</DateTime>
+          </Node>
+          <Description>IRC server on #give-me-cmd channel</Description>
+        </System>
+      </Flow>
+      <Expectation action="investigate">
+        <Description>Confirm the source and take machines off-line and remediate</Description>
+      </Expectation>
+    </EventData>
+  </Incident>
+</IODEF-Document>
