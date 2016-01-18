@@ -6,6 +6,11 @@
     "homepage": "http://e-rave.nl/iodef",
     "type": "library",
     "license": "GPL-2.0",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev",
+        }
+    },
     "authors": [
 		{
 			"name": "Mark Stunnenberg",
@@ -21,7 +26,7 @@
     "require": {
         "php": ">=5.5.0",
         "sabre/xml": "^1.2",
-        "vlucas/valitron": ">=1.2.4"
+        "vlucas/valitron": "~1.2.4"
     },
     "autoload": {
         "psr-4": {
