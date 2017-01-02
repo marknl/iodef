@@ -13,17 +13,17 @@ class EventData extends IodefElement
         ];
 
         $this->elements = [
-            'Description'       => 'OPTIONAL_MULTI',
-            'DetectTime'        => 'OPTIONAL',
-            'StartTime'         => 'OPTIONAL',
-            'Contact'           => 'OPTIONAL_MULTI',
-            'Assessment'        => 'OPTIONAL',
-            'Method'            => 'OPTIONAL_MULTI',
-            'Flow'              => 'OPTIONAL_MULTI',
-            'Expectation'       => 'OPTIONAL_MULTI',
-            'Record'            => 'OPTIONAL',
-            'EventData'         => 'OPTIONAL_MULTI',
-            'AdditionalData'    => 'OPTIONAL_MULTI',
+            'Description'       => parent::OPTIONAL_MULTI,
+            'DetectTime'        => parent::OPTIONAL,
+            'StartTime'         => parent::OPTIONAL,
+            'Contact'           => parent::OPTIONAL_MULTI,
+            'Assessment'        => parent::OPTIONAL,
+            'Method'            => parent::OPTIONAL_MULTI,
+            'Flow'              => parent::OPTIONAL_MULTI,
+            'Expectation'       => parent::OPTIONAL_MULTI,
+            'Record'            => parent::OPTIONAL,
+            'EventData'         => parent::OPTIONAL_MULTI,
+            'AdditionalData'    => parent::OPTIONAL_MULTI,
         ];
     }
 

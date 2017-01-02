@@ -5,32 +5,35 @@
     "homepage": "http://e-rave.nl/iodef",
     "type": "library",
     "license": "GPL-2.0",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.x-dev"
-        }
-    },
     "authors": [
-		{
-			"name": "Mark Stunnenberg",
-			"email": "mark@e-rave.nl",
-			"homepage": "http://e-rave.nl/",
-			"role": "Lead"
-		}
-	],
+        {
+            "name": "Mark Stunnenberg",
+            "email": "mark@e-rave.nl",
+            "homepage": "http://e-rave.nl/",
+            "role": "Lead"
+        }
+    ],
     "support": {
         "issues": "https://github.com/marknl/iodef/issues",
         "source": "https://github.com/marknl/iodef"
     },
     "require": {
         "php": ">=5.5.0",
-	"sabre/xml": "1.5.*",
-	"sabre/uri": "1.2.*",
+        "sabre/xml": "1.5.*",
+        "sabre/uri": "1.2.*",
         "vlucas/valitron": "1.3.*"
     },
     "autoload": {
         "psr-4": {
             "Marknl\\Iodef\\": "src/"
+        },
+        "psr-0": {
+            "src/": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
         }
     }
 }

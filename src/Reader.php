@@ -13,6 +13,10 @@ use Sabre\Xml\Reader as SabreReader;
  */
 class Reader extends SabreReader
 {
+    /**
+     * Constructor
+     * @param string $xml XML formatted string
+     */
     public function __construct($xml)
     {
         $this->elementMap = [

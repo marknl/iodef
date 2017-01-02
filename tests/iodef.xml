@@ -46,5 +46,6 @@
         <Description>Confirm the source and take machines off-line and remediate</Description>
       </Expectation>
     </EventData>
+    <AdditionalData dtype="string" meaning="IODEF Test">Some additional data</AdditionalData>
   </Incident>
 </IODEF-Document>

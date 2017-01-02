@@ -9,7 +9,7 @@ class Flow extends IodefElement
     public function __construct()
     {
         $this->elements = [
-            'System'    => 'REQUIRED_MULTI',
+            'System'    => parent::REQUIRED_MULTI,
         ];
     }
 }

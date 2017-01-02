@@ -19,6 +19,9 @@ class Writer extends SabreWriter
      */
     public $formatOutput = false;
 
+    /**
+     * Contructor
+     */
     public function __construct()
     {
         $this->openMemory();
@@ -31,8 +34,7 @@ class Writer extends SabreWriter
     }
 
     /**
-     * Overwrite the original method, so we can add some output
-     * formatting for the XML.
+     * Overwrite the original method, so we can add some output formatting for the XML.
      * @param  boolval $flush Flush memory after
      * @return string
      */

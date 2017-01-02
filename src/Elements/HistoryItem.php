@@ -15,11 +15,11 @@ class HistoryItem extends IodefElement
         ];
 
         $this->elements = [
-            'DateTime'          => 'REQUIRED',
-            'IncidentId'        => 'OPTIONAL',
-            'Contact'           => 'OPTIONAL',
-            'Description'       => 'OPTIONAL_MULTI',
-            'AdditionalData'    => 'OPTIONAL_MULTI',
+            'DateTime'          => parent::REQUIRED,
+            'IncidentId'        => parent::OPTIONAL,
+            'Contact'           => parent::OPTIONAL,
+            'Description'       => parent::OPTIONAL_MULTI,
+            'AdditionalData'    => parent::OPTIONAL_MULTI,
         ];
     }
 

@@ -13,12 +13,12 @@ class RecordData extends IodefElement
         ];
 
         $this->elements = [
-            'DateTime'          => 'OPTIONAL',
-            'Description'       => 'OPTIONAL_MULTI',
-            'Application'       => 'OPTIONAL',
-            'RecordPattern'     => 'OPTIONAL_MULTI',
-            'RecordItem'        => 'REQUIRED_MULTI',
-            'AdditionalData'    => 'OPTIONAL_MULTI',
+            'DateTime'          => parent::OPTIONAL,
+            'Description'       => parent::OPTIONAL_MULTI,
+            'Application'       => parent::OPTIONAL,
+            'RecordPattern'     => parent::OPTIONAL_MULTI,
+            'RecordItem'        => parent::REQUIRED_MULTI,
+            'AdditionalData'    => parent::OPTIONAL_MULTI,
         ];
     }
 

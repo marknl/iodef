@@ -13,7 +13,7 @@ class AlternativeID extends IodefElement
         ];
 
         $this->elements = [
-            'IncidentID' => 'REQUIRED_MULTI',
+            'IncidentID' => parent::REQUIRED_MULTI,
         ];
     }
 

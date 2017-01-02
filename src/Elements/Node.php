@@ -9,12 +9,12 @@ class Node extends IodefElement
     public function __construct()
     {
         $this->elements = [
-            'NodeName'  => 'OPTIONAL_MULTI',
-            'Address'   => 'OPTIONAL_MULTI',
-            'Location'  => 'OPTIONAL',
-            'DateTime'  => 'OPTIONAL',
-            'NodeRole'  => 'OPTIONAL_MULTI',
-            'Counter'   => 'OPTIONAL_MULTI',
+            'NodeName'  => parent::OPTIONAL_MULTI,
+            'Address'   => parent::OPTIONAL_MULTI,
+            'Location'  => parent::OPTIONAL,
+            'DateTime'  => parent::OPTIONAL,
+            'NodeRole'  => parent::OPTIONAL_MULTI,
+            'Counter'   => parent::OPTIONAL_MULTI,
         ];
     }
 }

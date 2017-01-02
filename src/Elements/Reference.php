@@ -9,9 +9,9 @@ class Reference extends IodefElement
     public function __construct()
     {
         $this->elements = [
-            'ReferenceName' => 'REQUIRED',
-            'URL'           => 'OPTIONAL_MULTI',
-            'Description'   => 'OPTIONAL_MULTI',
+            'ReferenceName' => parent::REQUIRED,
+            'URL'           => parent::OPTIONAL_MULTI,
+            'Description'   => parent::OPTIONAL_MULTI,
         ];
     }
 }

@@ -16,10 +16,10 @@ class Expectation extends IodefElement
         ];
 
         $this->elements = [
-            'Description'   => 'OPTIONAL_MULTI',
-            'StartTime'     => 'OPTIONAL',
-            'EndTime'       => 'OPTIONAL',
-            'Contact'       => 'OPTIONAL',
+            'Description'   => parent::OPTIONAL_MULTI,
+            'StartTime'     => parent::OPTIONAL,
+            'EndTime'       => parent::OPTIONAL,
+            'Contact'       => parent::OPTIONAL,
         ];
     }
 

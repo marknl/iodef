@@ -13,12 +13,12 @@ class Service extends IodefElement
         ];
 
         $this->elements = [
-            'Port'          => 'OPTIONAL',
-            'Portlist'      => 'OPTIONAL',
-            'ProtoCode'     => 'OPTIONAL',
-            'ProtoType'     => 'OPTIONAL',
-            'ProtoFlags'    => 'OPTIONAL',
-            'Application'   => 'OPTIONAL',
+            'Port'          => parent::OPTIONAL,
+            'Portlist'      => parent::OPTIONAL,
+            'ProtoCode'     => parent::OPTIONAL,
+            'ProtoType'     => parent::OPTIONAL,
+            'ProtoFlags'    => parent::OPTIONAL,
+            'Application'   => parent::OPTIONAL,
         ];
     }
 

@@ -13,7 +13,7 @@ class Record extends IodefElement
         ];
 
         $this->elements = [
-            'RecordData' => 'REQUIRED_MULTI',
+            'RecordData' => parent::REQUIRED_MULTI,
         ];
     }
 

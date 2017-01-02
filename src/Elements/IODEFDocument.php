@@ -21,7 +21,7 @@ class IODEFDocument extends IodefElement
         ];
 
         $this->elements = [
-            'Incident' => 'REQUIRED_MULTI',
+            'Incident' => parent::REQUIRED_MULTI,
         ];
     }
 

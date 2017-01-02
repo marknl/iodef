@@ -16,20 +16,20 @@ class Incident extends IodefElement
         ];
 
         $this->elements = [
-            'IncidentID'        => 'REQUIRED',
-            'AlternativeID'     => 'OPTIONAL',
-            'RelatedActivity'   => 'OPTIONAL',
-            'DetectTime'        => 'OPTIONAL',
-            'StartTime'         => 'OPTIONAL',
-            'EndTime'           => 'OPTIONAL',
-            'ReportTime'        => 'REQUIRED',
-            'Description'       => 'OPTIONAL_MULTI',
-            'Assessment'        => 'REQUIRED_MULTI',
-            'Method'            => 'OPTIONAL_MULTI',
-            'Contact'           => 'REQUIRED_MULTI',
-            'EventData'         => 'OPTIONAL_MULTI',
-            'History'           => 'OPTIONAL',
-            'AdditionalData'    => 'OPTIONAL_MULTI',
+            'IncidentID'        => parent::REQUIRED,
+            'AlternativeID'     => parent::OPTIONAL,
+            'RelatedActivity'   => parent::OPTIONAL,
+            'DetectTime'        => parent::OPTIONAL,
+            'StartTime'         => parent::OPTIONAL,
+            'EndTime'           => parent::OPTIONAL,
+            'ReportTime'        => parent::REQUIRED,
+            'Description'       => parent::OPTIONAL_MULTI,
+            'Assessment'        => parent::REQUIRED_MULTI,
+            'Method'            => parent::OPTIONAL_MULTI,
+            'Contact'           => parent::REQUIRED_MULTI,
+            'EventData'         => parent::OPTIONAL_MULTI,
+            'History'           => parent::OPTIONAL,
+            'AdditionalData'    => parent::OPTIONAL_MULTI,
         ];
     }
 

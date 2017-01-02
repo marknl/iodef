@@ -19,7 +19,7 @@ class Application extends IodefElement
         ];
 
         $this->elements = [
-            'URL' => 'OPTIONAL',
+            'URL' => parent::OPTIONAL,
         ];
     }
 

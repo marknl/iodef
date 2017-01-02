@@ -11,14 +11,15 @@ use Valitron\Validator as Validator;
  * IODEF Element Class.
  * Provides a blueprint for all IODEF Element Types.
  *
- * @copyright Copyright (C) 2015-2016 Marknl (www.e-rave.nl)
+ * @copyright Copyright (C) 2015-2017 Marknl (www.e-rave.nl)
  * @author Mark Stunnenberg <mark@e-rave.nl>
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 abstract class IodefElement implements SabreElement
 {
     /**
-     * The IODEF namespace as described in rfc-5070
+     * The IODEF namespace as described in rfc-5070.
+     * For more info: https://www.ietf.org/rfc/rfc5070.txt
      * @var string
      */
     protected $ns = '{urn:ietf:params:xml:ns:iodef-1.0}';
@@ -38,9 +39,33 @@ abstract class IodefElement implements SabreElement
     protected $elements = [];
 
     /**
-     * Get the ShortName of the given IodefObject
-     * @param  iodefElement $class
-     * @return string
+     * Constant for required element
+     * @var integer
+     */
+    const REQUIRED           = 0b00;
+
+    /**
+     * Constant for required array element
+     * @var integer
+     */
+    const REQUIRED_MULTI     = 0b01;
+
+    /**
+     * Constant for optional element
+     * @var integer
+     */
+    const OPTIONAL           = 0b10;
+
+    /**
+     * Constant for optional array element
+     * @var integer
+     */
+    const OPTIONAL_MULTI     = 0b11;
+
+    /**
+     * Get the short name of the given IodefObject.
+     * @param  iodefElement $class An instance of IodefElement.
+     * @return string Class name
      */
     public function getShortName($class = null)
     {
@@ -55,8 +80,8 @@ abstract class IodefElement implements SabreElement
 
     /**
      * Add an attribute.
-     * @param string $name
-     * @param string $value
+     * @param array $attributes Array contists of standard name/value pair.
+     * @return void
      */
     public function setAttributes(array $attributes)
     {
@@ -66,8 +91,8 @@ abstract class IodefElement implements SabreElement
     }
 
     /**
-     * Get the attributes
-     * @return array
+     * Get the attributes.
+     * @return array List of attributes.
      */
     public function getAttributes()
     {
@@ -76,7 +101,7 @@ abstract class IodefElement implements SabreElement
 
     /**
      * Set the value of the element
-     * @param  mixed $value
+     * @param  mixed $value Value to be set.
      * @return void
      */
     public function value($value)
@@ -92,20 +117,24 @@ abstract class IodefElement implements SabreElement
     public function addChild($child)
     {
         $class = $this->getShortName($child);
+
+        // Only add child if it's an known element.
         if (array_key_exists($class, $this->elements)) {
-            if (substr($this->elements[$class], -6) == '_MULTI') {
+            // If we can expect more, add it to an array.
+            //if (substr($this->elements[$class], -6) == '_MULTI') {
+            if (in_array($this->elements[$class], [self::REQUIRED_MULTI, self::OPTIONAL_MULTI])) {
                 $this->{$class}[] = $child;
             } else {
                 $this->{$class} = $child;
             }
         } else {
-            die($this->getShortName(get_called_class()) .": {$class} is not allowed as child a element.");
+            die($this->getShortName(get_called_class()) .": {$class} is not allowed as a child element.");
         }
     }
 
     /**
-     * [getChildren description]
-     * @return void
+     * Get all chilren of the current IodefElement.
+     * @return array List of child elements.
      */
     protected function getChildren()
     {
@@ -114,6 +143,7 @@ abstract class IodefElement implements SabreElement
         foreach ($this->elements as $element => $occurrence) {
             switch ($occurrence) {
                 case 'REQUIRED':
+                case self::REQUIRED:
                     if (property_exists($this, $element)) {
                         $retArray[] = [
                             'name'          => $this->ns.$element,
@@ -127,6 +157,7 @@ abstract class IodefElement implements SabreElement
                     }
                     break;
                 case 'OPTIONAL':
+                case self::OPTIONAL:
                     if (property_exists($this, $element)) {
                         $retArray[] = [
                             'name'          => $this->ns.$element,
@@ -136,6 +167,7 @@ abstract class IodefElement implements SabreElement
                     }
                     break;
                 case 'REQUIRED_MULTI':
+                case self::REQUIRED_MULTI:
                     if (property_exists($this, $element)) {
                         foreach ($this->$element as $child) {
                             $retArray[] = [
@@ -151,6 +183,7 @@ abstract class IodefElement implements SabreElement
                     }
                     break;
                 case 'OPTIONAL_MULTI':
+                case self::OPTIONAL_MULTI:
                     if (property_exists($this, $element)) {
                         foreach ($this->$element as $child) {
                             $retArray[] = [
@@ -174,7 +207,7 @@ abstract class IodefElement implements SabreElement
 
     /**
      * Convert XML Elements to IodefElement Objects
-     * @param  SabreReader $reader [description]
+     * @param  SabreReader $reader
      * @return IodefElement
      */
     public static function xmlDeserialize(SabreReader $reader)
@@ -190,8 +223,9 @@ abstract class IodefElement implements SabreElement
                 // This should always and only by of type 'object'.
                 if (gettype($child['value']) == 'object') {
                     $className = $child['value']->getShortName();
-
-                    if (substr($IodefElement->elements[$className], -6) == '_MULTI') {
+                    // We can expect multiple entries here, so add it to an array.
+                    //if (substr($IodefElement->elements[$className], -6) == '_MULTI') {
+                    if (in_array($IodefElement->elements[$className], [self::REQUIRED_MULTI, self::OPTIONAL_MULTI])) {
                         $IodefElement->{$className}[] = $child['value'];
                     } else {
                         $IodefElement->{$className} = $child['value'];
@@ -225,7 +259,7 @@ abstract class IodefElement implements SabreElement
                 $writer->write($this->getChildren());
             }
         } else {
-            die($this->getShortName(). ": Validation failed, see details above.");
+            die("\nValidation on element <".$this->getShortName()."> failed, see details above.\n");
         }
     }
 
@@ -264,12 +298,12 @@ abstract class IodefElement implements SabreElement
 
                 // Validation failed to succeeed, show errors
                 if (!$validate_value->validate()) {
-                    echo 'The value failed to pass the validator:';
+                    echo "The 'value' failed to pass the validator:";
                     foreach ($validate_value->errors() as $message) {
                         if (is_array($message)) {
-                           $message = implode(',', $message);
+                            $message = implode(',', $message);
                         }
-                        echo ' '. $message;
+                        echo ' '. strtolower($message);
                     }
                     return false;
                 }

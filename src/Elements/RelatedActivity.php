@@ -13,8 +13,8 @@ class RelatedActivity extends IodefElement
         ];
 
         $this->elements = [
-            'IncidentID'    => 'OPTIONAL_MULTI',
-            'URL'           => 'OPTIONAL_MULTI',
+            'IncidentID'    => parent::OPTIONAL_MULTI,
+            'URL'           => parent::OPTIONAL_MULTI,
         ];
     }
 

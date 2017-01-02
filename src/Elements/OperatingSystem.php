@@ -19,7 +19,7 @@ class OperatingSystem extends IodefElement
         ];
 
         $this->elements = [
-            'URL' => 'OPTIONAL',
+            'URL' => parent::OPTIONAL,
         ];
     }
 

@@ -14,12 +14,12 @@ class Assessment extends IodefElement
         ];
 
         $this->elements = [
-            'Impact'            => 'OPTIONAL_MULTI',
-            'TimeImpact'        => 'OPTIONAL_MULTI',
-            'MonetaryImpact'    => 'OPTIONAL_MULTI',
-            'Counter'           => 'OPTIONAL_MULTI',
-            'Confidence'        => 'OPTIONAL',
-            'AdditionalData'    => 'OPTIONAL_MULTI',
+            'Impact'            => parent::OPTIONAL_MULTI,
+            'TimeImpact'        => parent::OPTIONAL_MULTI,
+            'MonetaryImpact'    => parent::OPTIONAL_MULTI,
+            'Counter'           => parent::OPTIONAL_MULTI,
+            'Confidence'        => parent::OPTIONAL,
+            'AdditionalData'    => parent::OPTIONAL_MULTI,
         ];
     }
 

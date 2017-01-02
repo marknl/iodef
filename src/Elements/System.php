@@ -16,12 +16,12 @@ class System extends IodefElement
             'spoofed'       => 'unknown',
         ];
         $this->elements = [
-            'Node'              => 'REQUIRED',
-            'Service'           => 'OPTIONAL_MULTI',
-            'OperatingSystem'   => 'OPTIONAL_MULTI',
-            'Counter'           => 'OPTIONAL_MULTI',
-            'Description'       => 'OPTIONAL_MULTI',
-            'AdditionalData'    => 'OPTIONAL_MULTI',
+            'Node'              => parent::REQUIRED,
+            'Service'           => parent::OPTIONAL_MULTI,
+            'OperatingSystem'   => parent::OPTIONAL_MULTI,
+            'Counter'           => parent::OPTIONAL_MULTI,
+            'Description'       => parent::OPTIONAL_MULTI,
+            'AdditionalData'    => parent::OPTIONAL_MULTI,
         ];
     }
 

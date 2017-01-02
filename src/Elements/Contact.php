@@ -17,16 +17,16 @@ class Contact extends IodefElement
         ];
 
         $this->elements = [
-            'ContactName'       => 'OPTIONAL',
-            'Description'       => 'OPTIONAL_MULTI',
-            'RegistryHandle'    => 'OPTIONAL_MULTI',
-            'PostalAddress'     => 'OPTIONAL',
-            'Email'             => 'OPTIONAL_MULTI',
-            'Telephone'         => 'OPTIONAL_MULTI',
-            'Fax'               => 'OPTIONAL',
-            'Timezone'          => 'OPTIONAL',
-            'Contact'           => 'OPTIONAL_MULTI',
-            'AdditionalData'    => 'OPTIONAL_MULTI',
+            'ContactName'       => parent::OPTIONAL,
+            'Description'       => parent::OPTIONAL_MULTI,
+            'RegistryHandle'    => parent::OPTIONAL_MULTI,
+            'PostalAddress'     => parent::OPTIONAL,
+            'Email'             => parent::OPTIONAL_MULTI,
+            'Telephone'         => parent::OPTIONAL_MULTI,
+            'Fax'               => parent::OPTIONAL,
+            'Timezone'          => parent::OPTIONAL,
+            'Contact'           => parent::OPTIONAL_MULTI,
+            'AdditionalData'    => parent::OPTIONAL_MULTI,
         ];
     }
 

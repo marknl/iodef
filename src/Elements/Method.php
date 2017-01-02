@@ -13,9 +13,9 @@ class Method extends IodefElement
         ];
 
         $this->elements = [
-            'Reference'         => 'OPTIONAL_MULTI',
-            'Description'       => 'OPTIONAL_MULTI',
-            'AdditionalData'    => 'OPTIONAL_MULTI',
+            'Reference'         => parent::OPTIONAL_MULTI,
+            'Description'       => parent::OPTIONAL_MULTI,
+            'AdditionalData'    => parent::OPTIONAL_MULTI,
         ];
     }
 

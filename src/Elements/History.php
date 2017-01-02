@@ -13,7 +13,7 @@ class History extends IodefElement
         ];
 
         $this->elements = [
-            'HistoryItem' => 'REQUIRED_MULTI',
+            'HistoryItem' => parent::REQUIRED_MULTI,
         ];
     }
 

@@ -145,6 +145,12 @@ class WriterTest extends PHPUnit_Framework_TestCase
 
             $Incident->addChild($EventData);
 
+                $AdditionalData = new Marknl\Iodef\Elements\AdditionalData();
+                $AdditionalData->setAttributes(['dtype' => 'string', 'meaning' => 'IODEF Test']);
+                $AdditionalData->value('Some additional data');
+
+            $Incident->addChild($AdditionalData);
+
         $Document->addChild($Incident);
 
         $iodef = new Marknl\Iodef\Writer();
