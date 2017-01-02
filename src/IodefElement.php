@@ -266,6 +266,9 @@ abstract class IodefElement implements SabreElement
                 if (!$validate_value->validate()) {
                     echo 'The value failed to pass the validator:';
                     foreach ($validate_value->errors() as $message) {
+                        if (is_array($message)) {
+                           $message = implode(',', $message);
+                        }
                         echo ' '. $message;
                     }
                     return false;
