@@ -1,6 +1,6 @@
 <?php
 
-class WriterTest extends PHPUnit_Framework_TestCase
+class WriterTest extends \PHPUnit\Framework\TestCase
 {
     public function testWriter()
     {
