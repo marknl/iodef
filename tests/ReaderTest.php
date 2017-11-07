@@ -1,6 +1,7 @@
 <?php
 
-class ReaderTest extends PHPUnit_Framework_TestCase
+
+class ReaderTest extends \PHPUnit\Framework\TestCase
 {
     public function testReader()
     {
