@@ -289,7 +289,7 @@ abstract class IodefElement implements SabreElement
         }
 
         // If a value is set, validate it.
-        if (array_key_exists('value', $this)) {
+        if (array_key_exists('value', json_decode(json_encode($this), true))) {
             // It's possible that there is no value rule set.
             // If so, skip value validation.
             if (sizeof($this->getValueRule()) > 0) {
